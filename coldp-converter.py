@@ -18,7 +18,7 @@ def famRef(name):
     return '|'.join(familyRefs[family])
 
 # read references for families
-print "Parsing family references..."
+print("Parsing family references...")
 parser = bibtex.Parser()
 bib_data = parser.parse_file(BIB_FILE)
 for key in bib_data.entries:
@@ -32,7 +32,7 @@ for key in bib_data.entries:
 
 
 # normalize families & orders - dont write 
-print "Writing species data..."
+print("Writing species data...")
 with zipfile.ZipFile(ZIP_FILE) as zf:
   with io.TextIOWrapper(zf.open(DATA_FILE), encoding="Latin-1") as f:
     with open('NameUsage.tsv', 'w') as tf:
@@ -64,11 +64,11 @@ with zipfile.ZipFile(ZIP_FILE) as zf:
 
 
 # zip up nameusage, bibref & metadata
-print "Bundling ZIP archive..."
+print("Bundling ZIP archive...")
 coldp = zipfile.ZipFile('lcvp.zip', 'w', zipfile.ZIP_DEFLATED)
 coldp.write('metadata.yaml')
 coldp.write(BIB_FILE, arcname='reference.bib')
 coldp.write('nameusage.tsv')
 coldp.close()
 
-print "Done. ColDP archive completed
+print("Done. ColDP archive completed")
