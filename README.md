@@ -1,28 +1,16 @@
 # LCVP v1.0.4
-This is a datapackage containing the species list of the Leipzig Plant Catalogue. To use the data for name resolution use the [`lcvplants`](https://github.com/idiv-biodiversity/lcplants) package.
+This is a COL fork of the original R datapackage of the Leipzig Plant Catalogue. 
+It adds a python script to convert the raw data into a valid Catalogue of Life Data Package (ColDP) suitable for ingestion into COL ChecklistBank.
 
-# Installation
-You can easily install `LCVP` from within R using devtools (you may need to instsall devtools first).
+TODO: registration page on COL
 
-```r
-devtools::install_github("idiv-biodiversity/LCVP")
-```
 
-# Usage
-LCP is a data package. You can use it to access and export the Leipzig Vascular Plant Catalogue. For taxonomic name resolution using LCVP use the [`lcvplants`](https://github.com/idiv-biodiversity/lcvplants) package.
+# Python Converter Usage
 
-```{r}
-data(tab_lcvp)
-str(tab_lcvp)
-head(tab_lcvp)
+## Requirements
+pip install pybtex
 
-data(ref_lcvp)
-head(ref_lcvp)
-```
-
-# Citation
-
-```{r}
-library(LCVP)
-citation("LCVP")
-```
+## Run ColDP conversion
+This makes use of the zipped data and the bibtex citation and references file.
+It will generate distinct families in ColDP with references attached.
+It then places all the species in those families.
