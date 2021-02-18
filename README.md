@@ -1,9 +1,6 @@
 # LCVP v1.0.4
 This is a COL fork of the original R datapackage of the Leipzig Plant Catalogue described in https://doi.org/10.1038/s41597-020-00702-z.
-It adds a python script to convert the raw data into a valid Catalogue of Life Data Package (ColDP) suitable for ingestion into COL ChecklistBank.
-
-TODO: registration page on COL
-
+It adds a python script to convert the raw data into a valid Catalogue of Life Data Package (ColDP) suitable for ingestion into COL ChecklistBank where it is hosted at https://data.catalogueoflife.org/dataset/2262/.
 
 # Python Converter Usage
 
