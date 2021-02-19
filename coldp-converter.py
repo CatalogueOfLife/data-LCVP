@@ -11,6 +11,20 @@ familyRefs={}
 def idfy(name):
   return re.sub("[.&()]", "", name.replace(" ", "_"))
 
+RE_CANONICAL_ID = re.compile('^.(?: ?[a-z._-]+)+')
+def canonicalID(name):
+  m = re.match(RE_CANONICAL_ID, name)
+  if m:
+    return idfy(m.group(0))
+  return idfy(name)
+
+RE_SPECIES_ID = re.compile('^.[a-z._-]+ [a-z._-]+')
+def speciesOrFamilyID(name, family):
+  m = re.match(RE_SPECIES_ID, name)
+  if m:
+    return idfy(m.group(0))
+  return family
+
 def famRef(name):
   if family not in familyRefs:
     return ''
@@ -46,9 +60,8 @@ with zipfile.ZipFile(ZIP_FILE) as zf:
 
         # seen the family before?
         name=line[0]
-        status=line[1]
+        status=line[1] # ‘valid’, ‘synonym’, ‘unresolved’,  ‘external’ or ‘blanks’
         family=line[5]
-        ID=idfy(name)
         if family not in families:
           order=line[6]
           if order not in orders:
@@ -57,10 +70,9 @@ with zipfile.ZipFile(ZIP_FILE) as zf:
           families[family]=order
           writer.writerow([family, order, "family", family, 'accepted', famRef(family)])
         if status == 'synonym':
-          accepted=idfy(line[4])
-          writer.writerow([ID, accepted, '', name, status, ''])
+          writer.writerow([idfy(name), canonicalID(line[4]), '', name, status, ''])
         else:
-          writer.writerow([ID, family, '', name, status, ''])
+          writer.writerow([canonicalID(name), speciesOrFamilyID(name, family), '', name, status, ''])
 
 
 # zip up nameusage, bibref & metadata
