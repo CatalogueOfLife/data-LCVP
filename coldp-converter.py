@@ -18,11 +18,11 @@ def canonicalID(name):
     return idfy(m.group(0))
   return idfy(name)
 
-RE_SPECIES_ID = re.compile('^.[a-z._-]+ [a-z._-]+')
+RE_SPECIES_ID = re.compile('^(.[a-z._-]+ [a-z._-]+) [a-z.]{2,} ')
 def speciesOrFamilyID(name, family):
   m = re.match(RE_SPECIES_ID, name)
   if m:
-    return idfy(m.group(0))
+    return idfy(m.group(1))
   return family
 
 def famRef(name):
@@ -72,7 +72,9 @@ with zipfile.ZipFile(ZIP_FILE) as zf:
         if status == 'synonym':
           writer.writerow([idfy(name), canonicalID(line[4]), '', name, status, ''])
         else:
-          writer.writerow([canonicalID(name), speciesOrFamilyID(name, family), '', name, status, ''])
+          parent=speciesOrFamilyID(name, family)
+          #print(name, "#", family, parent)
+          writer.writerow([canonicalID(name), parent, '', name, status, ''])
 
 
 # zip up nameusage, bibref & metadata
