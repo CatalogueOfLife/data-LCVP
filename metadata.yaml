@@ -1,0 +1,57 @@
+title: The Leipzig catalogue of vascular plants
+alias: LCVP
+version: 3.01
+released: 2022-11-07      
+description: | 
+  The Leipzig catalogue of vascular plants provides an updated and much improved reference list 
+  for all described vascular plant species globally. 
+  We used ~4,500 publications, existing relevant databases and available studies on molecular phylogenetics to construct a robust reference backbone. 
+  A guiding principle during the compilation of the LCVP was to avoid polyphyletic genera, which are frequent in TPL, 
+  either by splitting genera (e.g. separating Goeppertia from Calathea) 
+  or fusing them (e.g. Stapelia and Duvalia in Ceropegia). 
+  However, we did not recombine any species name in the LCVP and in cases of unclear phylogenetic position of genera, we used the conservative (i.e. existing) name.
+
+  For details on methods see https://doi.org/10.1038/s41597-020-00702-z.
+
+organisations:         
+  - department: Systematic Botany and Functional Biodiversity / Botanical Garden
+    name: Institute of Biology, Leipzig University
+    city: Leipzig
+    country: Germany
+  - name: German Centre for Integrative Biodiversity Research (iDiv) Halle-Jena-Leipzig
+    city: Leipzig
+    country: Germany
+
+# single point of contact for questions
+contact: 
+  - givenName: Bruno
+    familyName: Vilela
+    email: bvilela.bv@gmail.com
+
+authors:
+  - givenName: Bruno
+    familyName: Vilela
+    email: bvilela.bv@gmail.com
+  - givenName: Alessandro
+    familyName: Gentile
+    email: gentile.alessandro@gmail.com
+    orcid: 
+  - givenName: Martin
+    familyName: Freiberg
+    email: freiberg@uni-leipzig.de
+    orcid: 0000-0002-6036-5293
+  - givenName: Marten
+    familyName: Winter
+    orcid: 
+  - givenName: Alexander
+    familyName: Zizka
+    email: alexander.zizka@idiv.de
+    orcid: 
+geographicScope: global
+taxonomicScope: vascular plants
+website: https://github.com/idiv-biodiversity/LCVP
+code: botanical
+license: CC-BY
+source:
+  - id: paper
+    doi: https://doi.org/10.1038/s41597-020-00702-z
